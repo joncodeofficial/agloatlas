@@ -18,7 +18,7 @@ export function FincaListItem({ finca, onPress }: FincaListItemProps) {
       <View className="flex-1 gap-1">
         <Text className="text-base font-medium text-card-foreground">{finca.name}</Text>
         <Text className="text-sm text-muted-foreground">
-          Creada el {format(new Date(finca.createdDate), "d 'de' MMMM 'de' yyyy", { locale: es })}
+          {format(new Date(finca.createdDate), "d 'de' MMMM 'de' yyyy", { locale: es })}
         </Text>
       </View>
 
