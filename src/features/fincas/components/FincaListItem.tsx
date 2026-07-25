@@ -13,7 +13,7 @@ export function FincaListItem({ finca, onPress }: FincaListItemProps) {
   return (
     <Pressable
       onPress={onPress}
-      className="flex-row items-center justify-between rounded-lg border border-border bg-card p-4 active:opacity-80"
+      className="flex-row items-center justify-between rounded-lg border border-border bg-card p-4 shadow-sm active:opacity-80"
     >
       <View className="flex-1 gap-1">
         <Text className="text-base font-medium text-card-foreground">{finca.name}</Text>
