@@ -9,8 +9,10 @@ import {
 
 export const AUTH_QUERY_KEY = ["auth"] as const;
 
+export type AuthSession = LoginResponse & { username: string };
+
 export function getAuthToken(): string | undefined {
-  return queryClient.getQueryData<LoginResponse | null>(AUTH_QUERY_KEY)
+  return queryClient.getQueryData<AuthSession | null>(AUTH_QUERY_KEY)
     ?.accessToken.token;
 }
 
