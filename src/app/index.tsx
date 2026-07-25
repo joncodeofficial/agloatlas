@@ -1,20 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 
 export default function Index() {
   return (
-    <View style={styles.container}>
-      <Text>Open up src/app/index.tsx to start working on your app!</Text>
+    <View className="flex-1 items-center justify-center gap-2 bg-background">
+      <Text className="text-lg font-semibold text-foreground">AgroAtlas</Text>
+      <Text className="rounded-md bg-primary px-4 py-2 text-primary-foreground">
+        uniwind funcionando
+      </Text>
       <StatusBar style="auto" />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
