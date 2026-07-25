@@ -1,8 +1,6 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { loginRequest } from '../services/auth.service';
-import type { LoginCredentials, LoginResponse } from '../schemas/login.schema';
-
-export const AUTH_QUERY_KEY = ['auth'] as const;
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { AUTH_QUERY_KEY, loginRequest, logout } from "../services/auth.service";
+import type { LoginCredentials, LoginResponse } from "../schemas/login.schema";
 
 export function useAuth() {
   const queryClient = useQueryClient();
@@ -10,7 +8,8 @@ export function useAuth() {
   const authQuery = useQuery<LoginResponse | null>({
     queryKey: AUTH_QUERY_KEY,
     queryFn: async () => null,
-    initialData: () => queryClient.getQueryData<LoginResponse | null>(AUTH_QUERY_KEY) ?? null,
+    initialData: () =>
+      queryClient.getQueryData<LoginResponse | null>(AUTH_QUERY_KEY) ?? null,
     staleTime: Infinity,
     gcTime: Infinity,
   });
@@ -23,11 +22,6 @@ export function useAuth() {
       queryClient.setQueryData(AUTH_QUERY_KEY, data);
     },
   });
-
-  const logout = () => {
-    queryClient.setQueryData(AUTH_QUERY_KEY, null);
-    queryClient.clear();
-  };
 
   return {
     token: authData?.accessToken.token,

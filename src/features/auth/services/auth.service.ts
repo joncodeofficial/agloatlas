@@ -1,10 +1,23 @@
 import axios from "axios";
 import { API_CONFIG } from "@/shared/config/api";
+import { queryClient } from "@/shared/lib/queryClient";
 import {
   loginResponseSchema,
   type LoginCredentials,
   type LoginResponse,
 } from "../schemas/login.schema";
+
+export const AUTH_QUERY_KEY = ["auth"] as const;
+
+export function getAuthToken(): string | undefined {
+  return queryClient.getQueryData<LoginResponse | null>(AUTH_QUERY_KEY)
+    ?.accessToken.token;
+}
+
+export function logout() {
+  queryClient.setQueryData(AUTH_QUERY_KEY, null);
+  queryClient.clear();
+}
 
 function toLoginError(error: unknown): Error {
   if (axios.isAxiosError(error)) {
