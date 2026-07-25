@@ -46,7 +46,7 @@ export default function Index() {
         <View className="w-full gap-4">
           <Image
             source={require("../assets/isotipo.webp")}
-            style={{ width: 240, height: 67, alignSelf: "center" }}
+            style={{ width: 260, height: 67, alignSelf: "center" }}
             resizeMode="contain"
             className="mb-4"
           />
