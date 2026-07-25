@@ -104,11 +104,7 @@ export default function Index() {
               loginError ? "opacity-100" : "opacity-0",
             )}
           >
-            {loginError instanceof Error
-              ? loginError.message
-              : loginError
-                ? "Error al iniciar sesión"
-                : " "}
+            {loginError ? loginError.message : " "}
           </Text>
         </View>
       </KeyboardAwareScrollView>
