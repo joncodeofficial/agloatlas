@@ -1,12 +1,12 @@
 import { FlashList } from "@shopify/flash-list";
 import { useRouter } from "expo-router";
 import { LogOut } from "lucide-react-native";
-import { ActivityIndicator, Text, View } from "react-native";
+import { Text, View } from "react-native";
 import { useAuth } from "@/features/auth";
 import { FincaListItem, useFincas } from "@/features/fincas";
 import Layout from "@/layout/Layout";
 import { createInitials } from "@/shared/lib/createInitials";
-import { Button } from "@/shared/ui/button";
+import { AsyncBoundary } from "@/shared/ui/async-boundary";
 import { CustomHeader } from "@/shared/ui/custom-header";
 import { DropdownMenu } from "@/shared/ui/dropdown-menu";
 
@@ -53,20 +53,12 @@ export default function Fincas() {
 
       <Layout statusBarStyle="light" edges={["bottom"]}>
         <View className="flex-1 pt-4">
-          {isLoading ? (
-            <View className="flex-1 items-center justify-center">
-              <ActivityIndicator size="large" />
-            </View>
-          ) : isError ? (
-            <View className="flex-1 items-center justify-center gap-4">
-              <Text className="text-center text-destructive">
-                No se pudieron cargar tus fincas.
-              </Text>
-              <Button variant="outline" onPress={() => refetch()}>
-                Reintentar
-              </Button>
-            </View>
-          ) : (
+          <AsyncBoundary
+            isLoading={isLoading}
+            isError={isError}
+            errorMessage="No se pudieron cargar tus fincas."
+            onRetry={refetch}
+          >
             <FlashList
               data={fincas}
               keyExtractor={(finca) => String(finca.id)}
@@ -80,7 +72,7 @@ export default function Fincas() {
                 />
               )}
             />
-          )}
+          </AsyncBoundary>
         </View>
       </Layout>
     </View>
