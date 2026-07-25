@@ -42,7 +42,11 @@ const Input = React.forwardRef<React.ElementRef<typeof TextInput>, InputProps>(
             </Pressable>
           )}
         </View>
-        {error && <Text className="mt-1 text-sm text-destructive">{error}</Text>}
+        <Text
+          className={cn('mt-1 h-5 text-sm text-destructive', error ? 'opacity-100' : 'opacity-0')}
+        >
+          {error || ' '}
+        </Text>
       </View>
     );
   }

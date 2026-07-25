@@ -3,28 +3,31 @@ import { Pressable, Text } from 'react-native';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/shared/lib/utils';
 
-const buttonVariants = cva('flex flex-row items-center justify-center rounded-md transition-colors', {
-  variants: {
-    variant: {
-      default: 'bg-primary active:opacity-80',
-      destructive: 'bg-destructive active:opacity-80',
-      outline: 'border border-border bg-transparent active:bg-muted',
-      secondary: 'bg-secondary active:opacity-80',
-      ghost: 'active:bg-muted',
-      link: 'underline-offset-4 active:underline',
+const buttonVariants = cva(
+  'flex flex-row items-center justify-center rounded-md transition-colors disabled:opacity-50',
+  {
+    variants: {
+      variant: {
+        default: 'bg-primary active:opacity-80',
+        destructive: 'bg-destructive active:opacity-80',
+        outline: 'border border-border bg-transparent active:bg-muted',
+        secondary: 'bg-secondary active:opacity-80',
+        ghost: 'active:bg-muted',
+        link: 'underline-offset-4 active:underline',
+      },
+      size: {
+        default: 'h-12 px-4 py-2',
+        sm: 'h-9 rounded-md px-3',
+        lg: 'h-14 rounded-md px-8',
+        icon: 'h-12 w-12',
+      },
     },
-    size: {
-      default: 'h-12 px-4 py-2',
-      sm: 'h-9 rounded-md px-3',
-      lg: 'h-14 rounded-md px-8',
-      icon: 'h-12 w-12',
+    defaultVariants: {
+      variant: 'default',
+      size: 'default',
     },
-  },
-  defaultVariants: {
-    variant: 'default',
-    size: 'default',
-  },
-});
+  }
+);
 
 const buttonTextVariants = cva('font-medium text-center', {
   variants: {
