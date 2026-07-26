@@ -16,6 +16,7 @@ export default function RootLayout() {
               <Stack.Screen name="index" />
               <Stack.Screen name="fincas" />
               <Stack.Screen name="atlas/[fincaId]" />
+              <Stack.Screen name="atlas/[fincaId]/[imei]" />
             </Stack>
           </KeyboardProvider>
         </SafeAreaProvider>

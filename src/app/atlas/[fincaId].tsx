@@ -1,15 +1,16 @@
 import { FlashList } from "@shopify/flash-list";
-import { useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { RadioTower } from "lucide-react-native";
 import { useState } from "react";
 import { Text, View } from "react-native";
-import { AtlasListItem, useAtlas } from "@/features/atlas";
+import { AtlasListItem, useAtlas, type Atlas } from "@/features/atlas";
 import { AppHeader } from "@/layout/AppHeader";
 import Layout from "@/layout/Layout";
 import { AsyncBoundary } from "@/shared/ui/async-boundary";
 import { Pagination } from "@/shared/ui/pagination";
 
 export default function AtlasList() {
+  const router = useRouter();
   const { fincaId, fincaName } = useLocalSearchParams<{
     fincaId: string;
     fincaName: string;
@@ -23,6 +24,13 @@ export default function AtlasList() {
     refetch,
     isRefetching,
   } = useAtlas(Number(fincaId), page);
+
+  const handleAtlasPress = (atlas: Atlas) => {
+    router.push({
+      pathname: "/atlas/[fincaId]/[imei]",
+      params: { fincaId, imei: atlas.imei },
+    });
+  };
 
   return (
     <View className="flex-1 bg-background">
@@ -47,7 +55,10 @@ export default function AtlasList() {
                   refreshing={isRefetching}
                   onRefresh={refetch}
                   renderItem={({ item }) => (
-                    <AtlasListItem atlas={item} onPress={() => {}} />
+                    <AtlasListItem
+                      atlas={item}
+                      onPress={() => handleAtlasPress(item)}
+                    />
                   )}
                 />
 
