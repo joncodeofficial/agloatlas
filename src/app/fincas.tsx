@@ -17,7 +17,7 @@ export default function Fincas() {
   } = useFincas();
 
   const handleFincaPress = (finca: Finca) => {
-    router.push({
+    router.navigate({
       pathname: "/atlas/[fincaId]",
       params: { fincaId: String(finca.id), fincaName: finca.name },
     });

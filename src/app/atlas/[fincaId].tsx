@@ -26,7 +26,7 @@ export default function AtlasList() {
   } = useAtlas(Number(fincaId), page);
 
   const handleAtlasPress = (atlas: Atlas) => {
-    router.push({
+    router.navigate({
       pathname: "/atlas/[fincaId]/[imei]",
       params: { fincaId, imei: atlas.imei },
     });
