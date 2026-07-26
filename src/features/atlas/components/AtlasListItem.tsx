@@ -16,10 +16,15 @@ export function AtlasListItem({ atlas, onPress }: AtlasListItemProps) {
       className="gap-3 rounded-lg border border-border bg-card p-4 shadow-sm active:opacity-80"
     >
       <View className="gap-1">
-        <Text className="text-base font-medium text-card-foreground">
+        <Text
+          className="text-base font-medium text-card-foreground"
+          numberOfLines={1}
+        >
           {atlas.name}
         </Text>
-        <Text className="text-sm text-muted-foreground">{atlas.imei}</Text>
+        <Text className="text-sm text-muted-foreground" numberOfLines={1}>
+          {atlas.imei}
+        </Text>
       </View>
 
       <View className="flex-row items-center justify-between">
