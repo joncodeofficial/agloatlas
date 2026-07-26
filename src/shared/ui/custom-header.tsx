@@ -1,15 +1,23 @@
 import { LinearGradient } from "expo-linear-gradient";
+import { useRouter } from "expo-router";
+import { ChevronLeft } from "lucide-react-native";
 import type { ReactNode } from "react";
-import { Text, View } from "react-native";
+import { Pressable, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 interface CustomHeaderProps {
   title: string;
   rightElement?: ReactNode;
+  showBackButton?: boolean;
 }
 
-export function CustomHeader({ title, rightElement }: CustomHeaderProps) {
+export function CustomHeader({
+  title,
+  rightElement,
+  showBackButton = false,
+}: CustomHeaderProps) {
   const insets = useSafeAreaInsets();
+  const router = useRouter();
 
   return (
     <LinearGradient
@@ -19,7 +27,19 @@ export function CustomHeader({ title, rightElement }: CustomHeaderProps) {
       className="flex-row items-center justify-between px-4 pb-4"
       style={{ paddingTop: insets.top + 12 }}
     >
-      <Text className="text-lg font-semibold text-primary-foreground">{title}</Text>
+      <View className="flex-row items-center gap-2">
+        {showBackButton && (
+          <Pressable
+            onPress={() => router.back()}
+            className="h-9 w-9 items-center justify-center rounded-full bg-primary-foreground/15 active:bg-primary-foreground/25"
+          >
+            <ChevronLeft size={20} color="#ffffff" />
+          </Pressable>
+        )}
+        <Text className="text-lg font-semibold text-primary-foreground">
+          {title}
+        </Text>
+      </View>
       {rightElement}
     </LinearGradient>
   );
