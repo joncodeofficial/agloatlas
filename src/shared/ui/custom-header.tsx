@@ -27,7 +27,7 @@ export function CustomHeader({
       className="flex-row items-center justify-between px-4 pb-4"
       style={{ paddingTop: insets.top + 12 }}
     >
-      <View className="flex-row items-center gap-2">
+      <View className="flex-1 flex-row items-center gap-2">
         {showBackButton && (
           <Pressable
             onPress={() => router.back()}
@@ -36,7 +36,10 @@ export function CustomHeader({
             <ChevronLeft size={20} color="#ffffff" />
           </Pressable>
         )}
-        <Text className="text-lg font-semibold text-primary-foreground">
+        <Text
+          className="flex-1 text-lg font-semibold text-primary-foreground"
+          numberOfLines={1}
+        >
           {title}
         </Text>
       </View>
