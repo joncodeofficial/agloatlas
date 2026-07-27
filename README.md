@@ -31,19 +31,21 @@ Organización por features (estilo Feature-Sliced Design), separando lo presenta
 src/
   app/                  # rutas de Expo Router (pantallas)
   features/
-    auth/                 # login: schemas, services, hooks
+    auth/                 # login: schemas, services, hooks, tests
     fincas/               # listado de fincas
     atlas/                # listado y detalle de Atlas
       schemas/            # validación con zod
       services/           # llamadas HTTP
       hooks/               # React Query
       components/          # componentes propios de la feature (ej. tooltip del mapa)
+      tests/               # tests unitarios de la feature (schemas, services)
   layout/                # wrappers que combinan UI + lógica (ej. AppHeader = header + logout)
   shared/
     ui/                  # componentes presentacionales puros y reutilizables
     hooks/                # hooks transversales (ej. useHardwareBack)
     config/               # cliente HTTP, config de API
     lib/                  # utilidades (queryClient, formatters, etc.)
+    tests/               # tests unitarios transversales + suite de integración
 ```
 
 `shared/ui` no conoce lógica de negocio; la composición con estado/auth/navegación vive en `layout/` o dentro de cada `features/*`.
@@ -64,10 +66,13 @@ Copiar `.env.example` a `.env` y completar:
 EXPO_PUBLIC_AUTH_BASE_URL=<URL del servicio de autenticación>
 EXPO_PUBLIC_CORE_BASE_URL=<URL de la API core (fincas / atlas)>
 EXPO_PUBLIC_GOOGLE_MAPS_API_KEY=<API key de Google Maps>
+TEST_ACCOUNT_USERNAME=<usuario de prueba, solo para tests de integración>
+TEST_ACCOUNT_PASSWORD=<contraseña de prueba, solo para tests de integración>
 ```
 
 - `EXPO_PUBLIC_AUTH_BASE_URL` / `EXPO_PUBLIC_CORE_BASE_URL`: bases de la API de Spherag provistas en la prueba técnica.
 - `EXPO_PUBLIC_GOOGLE_MAPS_API_KEY`: solo se usa en Android (`app.config.js` la inyecta en `android.config.googleMaps.apiKey`). En iOS el mapa usa Apple Maps por defecto, no requiere key.
+- `TEST_ACCOUNT_USERNAME` / `TEST_ACCOUNT_PASSWORD`: credenciales de la cuenta de prueba, usadas únicamente por la suite de tests de integración (ver [Testing](#testing)). Al no llevar el prefijo `EXPO_PUBLIC_`, nunca se empaquetan dentro de la app.
 
 ## Instalación y ejecución
 
@@ -94,6 +99,14 @@ Ambos comandos generan los proyectos nativos (`android/` e `ios/`, ignorados por
 | `yarn lint`         | Corre ESLint                               |
 | `yarn format`       | Formatea el proyecto con Prettier          |
 | `yarn format:check` | Verifica el formato sin modificar archivos |
+| `yarn test`         | Corre los tests unitarios (schemas, servicios, interceptors) |
+| `yarn test:watch`   | Corre los tests unitarios en modo watch    |
+| `yarn test:integration` | Corre los tests de integración contra la API real de Spherag |
+
+## Testing
+
+- **Unitarios** (`yarn test`): rápidos, sin red, todo mockeado. Cubren schemas de Zod, los servicios de `auth`/`fincas`/`atlas`, los interceptors de `httpClient` (Bearer token, logout en 401) y utilidades puras como `createInitials`.
+- **Integración** (`yarn test:integration`): pegan contra la API real de Spherag usando las fincas de prueba provistas (`1587` vacía, `1588` con 1 atlas, `1590` paginada). Requieren `TEST_ACCOUNT_USERNAME` / `TEST_ACCOUNT_PASSWORD` en `.env`; si no están definidas, la suite se salta automáticamente en vez de fallar. Corren en un config de Jest separado (`jest.integration.config.js`) para no mezclarse con los unitarios.
 
 ## Notas de arquitectura y UX
 
