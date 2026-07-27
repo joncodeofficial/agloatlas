@@ -23,13 +23,14 @@ export function CustomHeader({ title, rightElement, showBackButton = false }: Cu
       className='flex-row items-center justify-between px-4 pb-4'
       style={{ paddingTop: insets.top + 12 }}
     >
-      <View className='flex-1 flex-row items-center gap-2'>
+      <View className='flex-1 flex-row items-center gap-4'>
         {showBackButton && (
           <Pressable
             onPress={() => router.back()}
-            className='h-9 w-9 items-center justify-center rounded-full bg-primary-foreground/15 active:bg-primary-foreground/25'
+            hitSlop={8}
+            className='h-9 w-9 items-center justify-center rounded-full bg-primary-foreground/10 active:bg-primary-foreground/20'
           >
-            <ChevronLeft size={20} color='#ffffff' />
+            <ChevronLeft size={22} color='#ffffff' />
           </Pressable>
         )}
         <Text className='flex-1 text-lg font-semibold text-primary-foreground' numberOfLines={1}>
