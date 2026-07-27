@@ -86,7 +86,7 @@ export default function Index() {
           />
 
           <Button className='mt-6' onPress={handleSubmit(onSubmit)} disabled={isSubmitDisabled}>
-            {isLoggingIn ? <ActivityIndicator size='small' color='#ffffff' /> : 'Iniciar sesión'}
+            {isLoggingIn ? <ActivityIndicator size='small' color='#ffffff' /> : 'Acceder'}
           </Button>
 
           <Text
