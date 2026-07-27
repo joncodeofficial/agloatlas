@@ -9,10 +9,10 @@ import {
 import { QueryClientProvider } from '@tanstack/react-query';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { KeyboardProvider } from 'react-native-keyboard-controller';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { AnimatedSplash } from '@/layout/AnimatedSplash';
 import { queryClient } from '@/shared/lib/queryClient';
 import '../global.css';
 
@@ -27,11 +27,9 @@ export default function RootLayout() {
     Poppins_800ExtraBold,
   });
 
-  useEffect(() => {
-    if (fontsLoaded || fontError) SplashScreen.hideAsync();
-  }, [fontsLoaded, fontError]);
+  const ready = Boolean(fontsLoaded || fontError);
 
-  if (!fontsLoaded && !fontError) return null;
+  if (!ready) return null;
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
@@ -47,6 +45,7 @@ export default function RootLayout() {
           </KeyboardProvider>
         </SafeAreaProvider>
       </QueryClientProvider>
+      <AnimatedSplash ready={ready} />
     </GestureHandlerRootView>
   );
 }

@@ -27,7 +27,19 @@ module.exports = {
     web: {
       favicon: './src/assets/favicon.png',
     },
-    plugins: ['expo-router', 'expo-font', 'expo-splash-screen'],
+    plugins: [
+      'expo-router',
+      'expo-font',
+      [
+        'expo-splash-screen',
+        {
+          image: './src/assets/logo-transparent.png',
+          imageWidth: 140,
+          resizeMode: 'contain',
+          backgroundColor: '#293370',
+        },
+      ],
+    ],
     experiments: {
       typedRoutes: true,
     },
