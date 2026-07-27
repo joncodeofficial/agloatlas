@@ -7,6 +7,7 @@ import { AtlasListItem, useAtlas, type Atlas } from "@/features/atlas";
 import { AppHeader } from "@/layout/AppHeader";
 import Layout from "@/layout/Layout";
 import { AsyncBoundary } from "@/shared/ui/async-boundary";
+import { Loader } from "@/shared/ui/loader";
 import { Pagination } from "@/shared/ui/pagination";
 
 export default function AtlasList() {
@@ -23,6 +24,7 @@ export default function AtlasList() {
     isError,
     refetch,
     isRefetching,
+    isPlaceholderData,
   } = useAtlas(Number(fincaId), page);
 
   const handleAtlasPress = (atlas: Atlas) => {
@@ -47,20 +49,29 @@ export default function AtlasList() {
             {atlasPage?.totalCount === 0 ? (
               <EmptyAtlasState />
             ) : (
-              <>
-                <FlashList
-                  data={atlasPage?.items}
-                  keyExtractor={(atlas) => atlas.imei}
-                  ItemSeparatorComponent={() => <View className="h-3" />}
-                  refreshing={isRefetching}
-                  onRefresh={refetch}
-                  renderItem={({ item }) => (
-                    <AtlasListItem
-                      atlas={item}
-                      onPress={() => handleAtlasPress(item)}
-                    />
+              <View className="flex-1">
+                <View className="flex-1">
+                  <FlashList
+                    data={atlasPage?.items}
+                    keyExtractor={(atlas) => atlas.imei}
+                    ItemSeparatorComponent={() => <View className="h-3" />}
+                    contentContainerStyle={{ paddingBottom: 16 }}
+                    refreshing={isRefetching && !isPlaceholderData}
+                    onRefresh={refetch}
+                    renderItem={({ item }) => (
+                      <AtlasListItem
+                        atlas={item}
+                        onPress={() => handleAtlasPress(item)}
+                      />
+                    )}
+                  />
+
+                  {isPlaceholderData && (
+                    <View className="absolute inset-0 items-center justify-center bg-background/70">
+                      <Loader size={40} />
+                    </View>
                   )}
-                />
+                </View>
 
                 {atlasPage && atlasPage.totalPages > 1 && (
                   <Pagination
@@ -69,7 +80,7 @@ export default function AtlasList() {
                     onPageChange={setPage}
                   />
                 )}
-              </>
+              </View>
             )}
           </AsyncBoundary>
         </View>
