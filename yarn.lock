@@ -612,6 +612,11 @@
   resolved "https://registry.yarnpkg.com/@expo-google-fonts/material-symbols/-/material-symbols-0.4.42.tgz#db6c5420b6060aee755ead226dc5dbd431efddf2"
   integrity sha512-KZmHZRcthJ3KFZZlpzHjopA9guZgWR9fb3uVZlTR0BNlvG2pw1bnYBCpkze2PB0vRllwGhAM7lWXsfmcWCbXYg==
 
+"@expo-google-fonts/poppins@^0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/poppins/-/poppins-0.4.1.tgz#bf49b2a14a5d255fa3404fdef7bcbbb04025f0a4"
+  integrity sha512-LiX5oEryJqDt3UmWwr4oqf11hGMz/JEffkkNcZ3UtGwyoMFzXmBmTwcrAWrEttxypxmLNmPykDg+CY2VjKve9A==
+
 "@expo/cli@^57.0.10":
   version "57.0.10"
   resolved "https://registry.yarnpkg.com/@expo/cli/-/cli-57.0.10.tgz#199f151d1b9d7d6ea4f5b9fbc09d7750448601e5"
@@ -2491,6 +2496,15 @@ expo-server@^57.0.1:
   resolved "https://registry.yarnpkg.com/expo-server/-/expo-server-57.0.1.tgz#2362bf576e97250490209ac550c2610b88ba4cc1"
   integrity sha512-sBfVDH6dmKVHZxqUxbfkzS00PZELMZt1IpnHKxcOTMZtR/t7CtRAFrbXcisG+EyzeqHSVDacZT+1tbYfZt5D8w==
 
+expo-splash-screen@~57.0.5:
+  version "57.0.5"
+  resolved "https://registry.yarnpkg.com/expo-splash-screen/-/expo-splash-screen-57.0.5.tgz#4a2dea41e6d5e6b2a531850d7f73736b98e0f3d6"
+  integrity sha512-ZN0LDXlhHRNFjXTYZDojXk8IfaoUIu7qa3hhoBTXgyj1UB/iewGlH6+M3Nvhun2lY2d/+xhwqMhv0hIRoBo09Q==
+  dependencies:
+    "@expo/config-plugins" "~57.0.6"
+    "@expo/image-utils" "^0.11.4"
+    xml2js "0.6.0"
+
 expo-status-bar@~57.0.1:
   version "57.0.1"
   resolved "https://registry.yarnpkg.com/expo-status-bar/-/expo-status-bar-57.0.1.tgz#0a8ec1657fcd0987f9612ca411a0c3d002f0eaf0"
@@ -3845,6 +3859,11 @@ react-native-keyboard-controller@1.21.9:
   integrity sha512-+TkkFldht4+AXBQeDy1hLE7iqiW8/NkY/ekhcFsKIiRdI9qC5JDzx0TfAg1iYZB2IeOXppmURIy2jFCUjOcV1w==
   dependencies:
     react-native-is-edge-to-edge "^1.2.1"
+
+react-native-loader-kit@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-loader-kit/-/react-native-loader-kit-4.1.0.tgz#251ba4d27bc2b879812a707f1736a43abd827739"
+  integrity sha512-GQ7f6Q3neFl2zYeUbe1TMAkQ83ltB3sF11xW89DziXLkX23dgXHYcwK0Vfe/bWPaUaHHrauX9QXyfcAGZ72q5Q==
 
 react-native-maps@1.27.2:
   version "1.27.2"
