@@ -82,13 +82,13 @@ export default function AtlasList() {
 
 function EmptyAtlasState() {
   return (
-    <View className='flex-1 items-center justify-center gap-4 px-8'>
-      <View className='h-16 w-16 items-center justify-center rounded-full bg-muted'>
-        <RadioTower size={36} color='#9ca3af' />
+    <View className='flex-1 items-center justify-center gap-6 px-8'>
+      <View className='h-20 w-20 items-center justify-center rounded-full bg-muted'>
+        <RadioTower size={40} color='#9ca3af' />
       </View>
 
-      <View className='gap-1'>
-        <Text className='text-center text-base font-semibold text-foreground'>Sin Atlas instalados</Text>
+      <View className='max-w-[260px] gap-1.5'>
+        <Text className='text-center text-lg font-semibold text-foreground'>Sin Atlas instalados</Text>
         <Text className='text-center text-sm text-muted-foreground'>
           Todavía no se instaló ningún Atlas en esta finca.
         </Text>
