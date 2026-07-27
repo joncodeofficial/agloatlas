@@ -71,7 +71,7 @@ TEST_ACCOUNT_PASSWORD=<contraseña de prueba, solo para tests de integración>
 ```
 
 - `EXPO_PUBLIC_AUTH_BASE_URL` / `EXPO_PUBLIC_CORE_BASE_URL`: bases de la API de Spherag provistas en la prueba técnica.
-- `EXPO_PUBLIC_GOOGLE_MAPS_API_KEY`: solo se usa en Android (`app.config.js` la inyecta en `android.config.googleMaps.apiKey`). En iOS el mapa usa Apple Maps por defecto, no requiere key.
+- `EXPO_PUBLIC_GOOGLE_MAPS_API_KEY`: solo se usa en Android (`app.config.js` la inyecta en `android.config.googleMaps.apiKey`). En iOS el mapa usa Apple Maps por defecto, no requiere key. Es una key personal (gratuita, se genera en un par de minutos desde [Google Cloud Console](https://console.cloud.google.com/google/maps-apis)) — no se comparte entre desarrolladores, así que si vas a correr el proyecto en Android necesitás generar la tuya.
 - `TEST_ACCOUNT_USERNAME` / `TEST_ACCOUNT_PASSWORD`: credenciales de la cuenta de prueba, usadas únicamente por la suite de tests de integración (ver [Testing](#testing)). Al no llevar el prefijo `EXPO_PUBLIC_`, nunca se empaquetan dentro de la app.
 
 ## Instalación y ejecución
