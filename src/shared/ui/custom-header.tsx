@@ -4,6 +4,9 @@ import { ChevronLeft } from 'lucide-react-native';
 import type { ReactNode } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { withUniwind } from 'uniwind';
+
+const StyledLinearGradient = withUniwind(LinearGradient);
 
 interface CustomHeaderProps {
   title: string;
@@ -16,7 +19,7 @@ export function CustomHeader({ title, rightElement, showBackButton = false }: Cu
   const router = useRouter();
 
   return (
-    <LinearGradient
+    <StyledLinearGradient
       colors={['#364496', '#293370', '#141938']}
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 1 }}
@@ -38,6 +41,6 @@ export function CustomHeader({ title, rightElement, showBackButton = false }: Cu
         </Text>
       </View>
       {rightElement}
-    </LinearGradient>
+    </StyledLinearGradient>
   );
 }
