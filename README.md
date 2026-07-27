@@ -78,24 +78,20 @@ TEST_ACCOUNT_PASSWORD=<contraseña de prueba, solo para tests de integración>
 
 ```bash
 yarn install
-cp .env.example .env   # y completar las variables
+cp .env.example .env   # y completar las variables (ver arriba)
+
+npx expo prebuild       # genera android/ e ios/ a partir de app.config.js
 
 # Android (requiere Android Studio / un dispositivo con USB debugging)
-yarn android
+yarn android            # equivalente a: npx expo run:android
 
 # iOS (solo macOS, requiere Xcode)
-yarn ios
+yarn ios                # equivalente a: npx expo run:ios
 ```
 
-Ambos comandos generan los proyectos nativos (`android/` e `ios/`, ignorados por git) automáticamente antes de compilar.
+> ⚠️ Corré `prebuild` **después** de completar `.env`, no antes: la API key de Google Maps se inyecta en el `AndroidManifest.xml` nativo en ese paso, así que si `.env` no existe todavía, el mapa queda sin key hasta que vuelvas a correr `prebuild`.
 
-> Si solo cambiaste configuración nativa (`app.config.js`, iconos, splash screen) y querés regenerar `android/`/`ios/` sin recompilar, podés correrlo manualmente:
->
-> ```bash
-> npx expo prebuild
-> ```
->
-> No es necesario correrlo antes de `yarn android`/`yarn ios` — ellos lo invocan solos si las carpetas no existen. Como el proyecto usa el flujo managed de Expo (CNG), esas carpetas nunca se editan a mano ni se commitean: siempre se regeneran desde `app.config.js` + los plugins.
+`yarn android`/`yarn ios` ya ejecutan `prebuild` automáticamente si `android/`/`ios/` no existen — el paso manual de arriba es redundante en ese caso, pero lo dejamos explícito para que el flujo quede claro. Como el proyecto usa el flujo managed de Expo (CNG), esas carpetas nunca se editan a mano ni se commitean: siempre se regeneran desde `app.config.js` + los plugins, así que podés borrarlas y correr `npx expo prebuild` de nuevo cuando quieras sin perder nada.
 
 ## Scripts disponibles
 
