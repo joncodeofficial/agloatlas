@@ -4,7 +4,7 @@ module.exports = {
     slug: "AgroAtlas",
     version: "1.0.0",
     orientation: "portrait",
-    icon: "./src/assets/icon.png",
+    icon: "./src/assets/logo.png",
     userInterfaceStyle: "light",
     scheme: "agroatlas",
     ios: {
@@ -13,9 +13,7 @@ module.exports = {
     },
     android: {
       adaptiveIcon: {
-        backgroundColor: "#E6F4FE",
-        foregroundImage: "./src/assets/android-icon-foreground.png",
-        backgroundImage: "./src/assets/android-icon-background.png",
+        foregroundImage: "./src/assets/logo.png",
         monochromeImage: "./src/assets/android-icon-monochrome.png",
       },
       predictiveBackGestureEnabled: false,
@@ -29,7 +27,7 @@ module.exports = {
     web: {
       favicon: "./src/assets/favicon.png",
     },
-    plugins: ["expo-router"],
+    plugins: ["expo-router", "expo-font", "expo-splash-screen"],
     experiments: {
       typedRoutes: true,
     },
