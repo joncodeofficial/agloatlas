@@ -1,9 +1,9 @@
-import axios from 'axios';
+import { create, isAxiosError } from 'axios';
 import { router } from 'expo-router';
 import { getAuthToken, logout } from '@/features/auth/services/auth.service';
 import { API_CONFIG } from './api';
 
-export const coreHttpClient = axios.create({
+export const coreHttpClient = create({
   baseURL: API_CONFIG.CORE_BASE_URL,
 });
 
@@ -20,7 +20,7 @@ coreHttpClient.interceptors.request.use((config) => {
 coreHttpClient.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (axios.isAxiosError(error) && error.response?.status === 401) {
+    if (isAxiosError(error) && error.response?.status === 401) {
       logout();
       router.replace('/');
     }

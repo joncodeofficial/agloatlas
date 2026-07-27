@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { isAxiosError } from 'axios';
 import { API_CONFIG } from '@/shared/config/api';
 import { queryClient } from '@/shared/lib/queryClient';
 import { loginResponseSchema, type LoginCredentials, type LoginResponse } from '../schemas/login.schema';
@@ -17,7 +17,7 @@ export function logout() {
 }
 
 function toLoginError(error: unknown): Error {
-  if (axios.isAxiosError(error)) {
+  if (isAxiosError(error)) {
     const status = error.response?.status;
 
     if (status === 400) return new Error('Usuario o contraseña son incorrectos');
