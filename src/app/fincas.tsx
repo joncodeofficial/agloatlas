@@ -1,10 +1,9 @@
 import { FlashList } from '@shopify/flash-list';
 import { useRouter } from 'expo-router';
 import { View } from 'react-native';
-import { FincaListItem, useFincas, type Finca } from '@/features/fincas';
+import { FincaListItem, useFincas, useHardwareBack, type Finca } from '@/features/fincas';
 import { AppHeader } from '@/layout/AppHeader';
 import Layout from '@/layout/Layout';
-import { useHardwareBack } from '@/shared/hooks/useHardwareBack';
 import { AsyncBoundary } from '@/shared/ui/async-boundary';
 
 export default function Fincas() {
