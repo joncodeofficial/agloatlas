@@ -89,6 +89,14 @@ yarn ios
 
 Ambos comandos generan los proyectos nativos (`android/` e `ios/`, ignorados por git) automáticamente antes de compilar.
 
+> Si solo cambiaste configuración nativa (`app.config.js`, iconos, splash screen) y querés regenerar `android/`/`ios/` sin recompilar, podés correrlo manualmente:
+>
+> ```bash
+> npx expo prebuild
+> ```
+>
+> No es necesario correrlo antes de `yarn android`/`yarn ios` — ellos lo invocan solos si las carpetas no existen. Como el proyecto usa el flujo managed de Expo (CNG), esas carpetas nunca se editan a mano ni se commitean: siempre se regeneran desde `app.config.js` + los plugins.
+
 ## Scripts disponibles
 
 | Script              | Descripción                                |
@@ -105,8 +113,8 @@ Ambos comandos generan los proyectos nativos (`android/` e `ios/`, ignorados por
 
 ## Testing
 
-- **Unitarios** (`yarn test`): rápidos, sin red, todo mockeado. Cubren schemas de Zod, los servicios de `auth`/`fincas`/`atlas`, los interceptors de `httpClient` (Bearer token, logout en 401) y utilidades puras como `createInitials`.
-- **Integración** (`yarn test:integration`): pegan contra la API real de Spherag usando las fincas de prueba provistas (`1587` vacía, `1588` con 1 atlas, `1590` paginada). Requieren `TEST_ACCOUNT_USERNAME` / `TEST_ACCOUNT_PASSWORD` en `.env`; si no están definidas, la suite se salta automáticamente en vez de fallar. Corren en un config de Jest separado (`jest.integration.config.js`) para no mezclarse con los unitarios.
+- `yarn test`: unitarios (schemas, servicios, interceptors), mockeado, sin red.
+- `yarn test:integration`: contra la API real de Spherag; se salta automáticamente si faltan `TEST_ACCOUNT_USERNAME`/`TEST_ACCOUNT_PASSWORD` en `.env`.
 
 ## Notas de arquitectura y UX
 
