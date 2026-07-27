@@ -1,8 +1,8 @@
-import { AlertCircle, RefreshCw } from "lucide-react-native";
-import type { ReactNode } from "react";
-import { Text, View } from "react-native";
-import { Button } from "./button";
-import { Loader } from "./loader";
+import { AlertCircle, RefreshCw } from 'lucide-react-native';
+import type { ReactNode } from 'react';
+import { Text, View } from 'react-native';
+import { Button } from './button';
+import { Loader } from './loader';
 
 interface AsyncBoundaryProps {
   isLoading: boolean;
@@ -12,16 +12,10 @@ interface AsyncBoundaryProps {
   children: ReactNode;
 }
 
-export function AsyncBoundary({
-  isLoading,
-  isError,
-  errorMessage,
-  onRetry,
-  children,
-}: AsyncBoundaryProps) {
+export function AsyncBoundary({ isLoading, isError, errorMessage, onRetry, children }: AsyncBoundaryProps) {
   if (isLoading) {
     return (
-      <View className="flex-1 items-center justify-center">
+      <View className='flex-1 items-center justify-center'>
         <Loader />
       </View>
     );
@@ -29,29 +23,19 @@ export function AsyncBoundary({
 
   if (isError) {
     return (
-      <View className="flex-1 items-center justify-center gap-4 px-8">
-        <View className="h-16 w-16 items-center justify-center rounded-full bg-destructive/10">
-          <AlertCircle size={28} color="#ef4444" />
+      <View className='flex-1 items-center justify-center gap-4 px-8'>
+        <View className='h-16 w-16 items-center justify-center rounded-full bg-destructive/10'>
+          <AlertCircle size={28} color='#ef4444' />
         </View>
 
-        <View className="gap-1">
-          <Text className="text-center text-base font-semibold text-foreground">
-            No se pudo cargar la información
-          </Text>
-          <Text className="text-center text-sm text-muted-foreground">
-            {errorMessage}
-          </Text>
+        <View className='gap-1'>
+          <Text className='text-center text-base font-semibold text-foreground'>No se pudo cargar la información</Text>
+          <Text className='text-center text-sm text-muted-foreground'>{errorMessage}</Text>
         </View>
 
-        <Button
-          variant="outline"
-          onPress={onRetry}
-          className="mt-2 flex-row gap-2 px-6"
-        >
-          <RefreshCw size={16} color="#141938" />
-          <Text className="text-base font-medium text-foreground">
-            Reintentar
-          </Text>
+        <Button variant='outline' onPress={onRetry} className='mt-2 flex-row gap-2 px-6'>
+          <RefreshCw size={16} color='#141938' />
+          <Text className='text-base font-medium text-foreground'>Reintentar</Text>
         </Button>
       </View>
     );

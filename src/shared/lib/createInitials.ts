@@ -1,9 +1,9 @@
 export function createInitials(fullName: string): string {
   const name = fullName.trim().toLowerCase();
-  if (!name) return "";
+  if (!name) return '';
 
   const words = name.split(/\s+/);
-  let initials = "";
+  let initials = '';
 
   for (const word of words) {
     const firstLetter = word.match(/[a-záéíóúüñ]/i);

@@ -1,23 +1,23 @@
 module.exports = {
   expo: {
-    name: "AgroAtlas",
-    slug: "AgroAtlas",
-    version: "1.0.0",
-    orientation: "portrait",
-    icon: "./src/assets/logo.png",
-    userInterfaceStyle: "light",
-    scheme: "agroatlas",
+    name: 'AgroAtlas',
+    slug: 'AgroAtlas',
+    version: '1.0.0',
+    orientation: 'portrait',
+    icon: './src/assets/logo.png',
+    userInterfaceStyle: 'light',
+    scheme: 'agroatlas',
     ios: {
       supportsTablet: true,
-      bundleIdentifier: "com.granj215.AgroAtlas",
+      bundleIdentifier: 'com.granj215.AgroAtlas',
     },
     android: {
       adaptiveIcon: {
-        foregroundImage: "./src/assets/logo.png",
-        monochromeImage: "./src/assets/android-icon-monochrome.png",
+        foregroundImage: './src/assets/logo.png',
+        monochromeImage: './src/assets/android-icon-monochrome.png',
       },
       predictiveBackGestureEnabled: false,
-      package: "com.granj215.AgroAtlas",
+      package: 'com.granj215.AgroAtlas',
       config: {
         googleMaps: {
           apiKey: process.env.EXPO_PUBLIC_GOOGLE_MAPS_API_KEY,
@@ -25,9 +25,9 @@ module.exports = {
       },
     },
     web: {
-      favicon: "./src/assets/favicon.png",
+      favicon: './src/assets/favicon.png',
     },
-    plugins: ["expo-router", "expo-font", "expo-splash-screen"],
+    plugins: ['expo-router', 'expo-font', 'expo-splash-screen'],
     experiments: {
       typedRoutes: true,
     },

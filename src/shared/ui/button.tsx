@@ -53,8 +53,7 @@ const buttonTextVariants = cva('font-medium text-center', {
 });
 
 export interface ButtonProps
-  extends React.ComponentPropsWithoutRef<typeof Pressable>,
-    VariantProps<typeof buttonVariants> {
+  extends React.ComponentPropsWithoutRef<typeof Pressable>, VariantProps<typeof buttonVariants> {
   children?: React.ReactNode;
 }
 

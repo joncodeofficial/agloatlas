@@ -1,9 +1,9 @@
-import { useQuery } from "@tanstack/react-query";
-import { listFincas } from "../services/fincas.service";
+import { useQuery } from '@tanstack/react-query';
+import { listFincas } from '../services/fincas.service';
 
 export function useFincas() {
   return useQuery({
-    queryKey: ["fincas"],
+    queryKey: ['fincas'],
     queryFn: listFincas,
   });
 }

@@ -1,7 +1,7 @@
-import * as React from "react";
-import { Dimensions, Modal, Pressable, Text, View } from "react-native";
-import type { LucideIcon } from "lucide-react-native";
-import { cn } from "@/shared/lib/utils";
+import * as React from 'react';
+import { Dimensions, Modal, Pressable, Text, View } from 'react-native';
+import type { LucideIcon } from 'lucide-react-native';
+import { cn } from '@/shared/lib/utils';
 
 export interface DropdownMenuItem {
   label: string;
@@ -25,7 +25,7 @@ export function DropdownMenu({ trigger, items }: DropdownMenuProps) {
 
   const openMenu = () => {
     triggerRef.current?.measureInWindow((x, y, width, height) => {
-      const screenWidth = Dimensions.get("window").width;
+      const screenWidth = Dimensions.get('window').width;
 
       setPosition({
         top: y + height + MENU_GAP,
@@ -46,15 +46,10 @@ export function DropdownMenu({ trigger, items }: DropdownMenuProps) {
         {trigger}
       </Pressable>
 
-      <Modal
-        visible={isOpen}
-        transparent
-        animationType="fade"
-        onRequestClose={() => setIsOpen(false)}
-      >
-        <Pressable className="flex-1" onPress={() => setIsOpen(false)}>
+      <Modal visible={isOpen} transparent animationType='fade' onRequestClose={() => setIsOpen(false)}>
+        <Pressable className='flex-1' onPress={() => setIsOpen(false)}>
           <View
-            className="absolute min-w-50 overflow-hidden rounded-md border border-border bg-popover shadow-lg"
+            className='absolute min-w-50 overflow-hidden rounded-md border border-border bg-popover shadow-lg'
             style={{ top: position.top, right: position.right }}
           >
             {items.map((item, index) => (
@@ -62,24 +57,12 @@ export function DropdownMenu({ trigger, items }: DropdownMenuProps) {
                 key={item.label}
                 onPress={() => handleItemPress(item)}
                 className={cn(
-                  "flex-row items-center gap-3 px-4 py-3 active:bg-muted",
-                  index < items.length - 1 && "border-b border-border",
+                  'flex-row items-center gap-3 px-4 py-3 active:bg-muted',
+                  index < items.length - 1 && 'border-b border-border'
                 )}
               >
-                {item.icon && (
-                  <item.icon
-                    size={18}
-                    color={item.destructive ? "#ef4444" : "#6b7280"}
-                  />
-                )}
-                <Text
-                  className={cn(
-                    "text-base",
-                    item.destructive
-                      ? "text-destructive"
-                      : "text-popover-foreground",
-                  )}
-                >
+                {item.icon && <item.icon size={18} color={item.destructive ? '#ef4444' : '#6b7280'} />}
+                <Text className={cn('text-base', item.destructive ? 'text-destructive' : 'text-popover-foreground')}>
                   {item.label}
                 </Text>
               </Pressable>
