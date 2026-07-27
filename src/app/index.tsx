@@ -41,14 +41,13 @@ export default function Index() {
         showsVerticalScrollIndicator={false}
       >
         <View className='w-full gap-4'>
-          <Image
-            source={require('../assets/isotipo.webp')}
-            style={{
-              alignSelf: 'center',
-            }}
-            resizeMode='contain'
-            className='pt-24 mb-4 w-72 h-16.75 '
-          />
+          <View className='mb-4 pt-24'>
+            <Image
+              source={require('../assets/isotipo.png')}
+              style={{ alignSelf: 'center', height: 58.625, width: 252 }}
+              resizeMode='contain'
+            />
+          </View>
 
           <Controller
             control={control}
