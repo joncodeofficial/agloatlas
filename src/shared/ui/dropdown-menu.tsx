@@ -45,7 +45,13 @@ export function DropdownMenu({ trigger, items }: DropdownMenuProps) {
         {trigger}
       </Pressable>
 
-      <Modal visible={isOpen} transparent animationType='fade' presentationStyle='overFullScreen' onRequestClose={() => setIsOpen(false)}>
+      <Modal
+        visible={isOpen}
+        transparent
+        animationType='fade'
+        presentationStyle='overFullScreen'
+        onRequestClose={() => setIsOpen(false)}
+      >
         <Pressable style={StyleSheet.absoluteFill} onPress={() => setIsOpen(false)}>
           <View
             className='absolute min-w-50 overflow-hidden rounded-md border border-border bg-popover shadow-lg'

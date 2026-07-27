@@ -11,8 +11,8 @@ function axiosError(status: number): Error & { response: { status: number } } {
 
 describe('loginRequest error mapping', () => {
   beforeEach(() => {
-    mockedAxios.isAxiosError.mockImplementation(
-      (e): e is AxiosError => Boolean((e as { response?: unknown })?.response)
+    mockedAxios.isAxiosError.mockImplementation((e): e is AxiosError =>
+      Boolean((e as { response?: unknown })?.response)
     );
   });
 
@@ -33,9 +33,7 @@ describe('loginRequest error mapping', () => {
   it('maps any other failure to a generic error', async () => {
     mockedAxios.post.mockRejectedValueOnce(new Error('network down'));
 
-    await expect(loginRequest({ username: 'a', password: 'b' })).rejects.toThrow(
-      'No se pudo iniciar sesión'
-    );
+    await expect(loginRequest({ username: 'a', password: 'b' })).rejects.toThrow('No se pudo iniciar sesión');
   });
 });
 

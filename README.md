@@ -95,16 +95,16 @@ yarn ios                # equivalente a: npx expo run:ios
 
 ## Scripts disponibles
 
-| Script              | Descripción                                |
-| ------------------- | ------------------------------------------ |
-| `yarn start`        | Inicia el servidor de Metro                |
-| `yarn android`      | Compila y corre la app en Android          |
-| `yarn ios`          | Compila y corre la app en iOS              |
-| `yarn lint`         | Corre ESLint                               |
-| `yarn format`       | Formatea el proyecto con Prettier          |
-| `yarn format:check` | Verifica el formato sin modificar archivos |
-| `yarn test`         | Corre los tests unitarios (schemas, servicios, interceptors) |
-| `yarn test:watch`   | Corre los tests unitarios en modo watch    |
+| Script                  | Descripción                                                  |
+| ----------------------- | ------------------------------------------------------------ |
+| `yarn start`            | Inicia el servidor de Metro                                  |
+| `yarn android`          | Compila y corre la app en Android                            |
+| `yarn ios`              | Compila y corre la app en iOS                                |
+| `yarn lint`             | Corre ESLint                                                 |
+| `yarn format`           | Formatea el proyecto con Prettier                            |
+| `yarn format:check`     | Verifica el formato sin modificar archivos                   |
+| `yarn test`             | Corre los tests unitarios (schemas, servicios, interceptors) |
+| `yarn test:watch`       | Corre los tests unitarios en modo watch                      |
 | `yarn test:integration` | Corre los tests de integración contra la API real de Spherag |
 
 ## Testing
