@@ -1,12 +1,15 @@
 import { useLocalSearchParams } from 'expo-router';
 import { RadioTower } from 'lucide-react-native';
 import { useState } from 'react';
-import { View } from 'react-native';
+import { Platform, View } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { AtlasTooltip, useAtlasDetail } from '@/features/atlas';
 import { AppHeader } from '@/layout/AppHeader';
 import Layout from '@/layout/Layout';
 import { AsyncBoundary } from '@/shared/ui/async-boundary';
+
+const TOOLTIP_GAP = 40;
+const IOS_TOOLTIP_CENTER_OFFSET = 80;
 
 export default function AtlasDetailScreen() {
   const { fincaId, imei } = useLocalSearchParams<{
@@ -68,12 +71,13 @@ export default function AtlasDetailScreen() {
                   latitude: Number(atlas.latitude),
                   longitude: Number(atlas.longitude),
                 }}
-                anchor={{ x: 0.5, y: 1 }}
+                anchor={Platform.OS === 'android' ? { x: 0.5, y: 1 } : undefined}
+                centerOffset={Platform.OS === 'ios' ? { x: 0, y: -IOS_TOOLTIP_CENTER_OFFSET } : undefined}
                 opacity={showTooltip ? 1 : 0}
                 tracksViewChanges={tracksViewChanges}
                 tappable={false}
               >
-                <View style={{ marginBottom: 40 }}>
+                <View style={Platform.OS === 'android' ? { marginBottom: TOOLTIP_GAP } : undefined}>
                   <AtlasTooltip atlas={atlas} />
                 </View>
               </Marker>
