@@ -14,7 +14,7 @@ module.exports = {
     android: {
       adaptiveIcon: {
         foregroundImage: './src/assets/logo.png',
-        monochromeImage: './src/assets/android-icon-monochrome.png',
+        monochromeImage: './src/assets/logo-transparent.png',
       },
       predictiveBackGestureEnabled: false,
       package: 'com.granj215.AgroAtlas',
@@ -25,7 +25,7 @@ module.exports = {
       },
     },
     web: {
-      favicon: './src/assets/favicon.png',
+      favicon: './src/assets/logo.png',
     },
     plugins: [
       'expo-router',
