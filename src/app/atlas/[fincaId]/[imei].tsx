@@ -1,6 +1,6 @@
 import { useLocalSearchParams } from "expo-router";
 import { RadioTower } from "lucide-react-native";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { View } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import { AtlasTooltip, useAtlasDetail } from "@/features/atlas";
@@ -24,10 +24,9 @@ export default function AtlasDetailScreen() {
   const [showTooltip, setShowTooltip] = useState(false);
   const [tracksViewChanges, setTracksViewChanges] = useState(true);
 
-  useEffect(() => {
-    const timeout = setTimeout(() => setTracksViewChanges(false), 500);
-    return () => clearTimeout(timeout);
-  }, []);
+  const handleMapReady = () => {
+    setTimeout(() => setTracksViewChanges(false), 500);
+  };
 
   return (
     <View className="flex-1 bg-background">
@@ -51,6 +50,7 @@ export default function AtlasDetailScreen() {
                 longitudeDelta: 0.01,
               }}
               onPress={() => setShowTooltip(false)}
+              onMapReady={handleMapReady}
             >
               <Marker
                 coordinate={{
