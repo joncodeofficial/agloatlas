@@ -4,6 +4,7 @@ import { View } from "react-native";
 import { FincaListItem, useFincas, type Finca } from "@/features/fincas";
 import { AppHeader } from "@/layout/AppHeader";
 import Layout from "@/layout/Layout";
+import { useHardwareBack } from "@/shared/hooks/useHardwareBack";
 import { AsyncBoundary } from "@/shared/ui/async-boundary";
 
 export default function Fincas() {
@@ -15,6 +16,8 @@ export default function Fincas() {
     refetch,
     isRefetching,
   } = useFincas();
+
+  useHardwareBack();
 
   const handleFincaPress = (finca: Finca) => {
     router.navigate({
